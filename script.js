@@ -324,3 +324,22 @@ saveResult = function(result) {
 };
 
 applyUnlockedLevels();
+document.getElementById("start-custom").addEventListener("click", () => {
+  const custom = document.getElementById("custom-text").value.trim();
+  if (custom.length < 5) {
+    alert("Đoạn văn quá ngắn!");
+    return;
+  }
+
+  sampleText = custom;
+  textInput.value = "";
+  textInput.disabled = false;
+  timerStarted = false;
+  timeLeft = parseInt(timeSelect.value);
+  timerSpan.innerText = timeLeft;
+  container.classList.remove("timeout");
+  wpmDisplay.innerText = "WPM: 0";
+  accuracyDisplay.innerText = "Độ chính xác: 100%";
+  renderText();
+  textInput.focus();
+});
